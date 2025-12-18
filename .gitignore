@@ -1,7 +1,14 @@
+# Python
 *.pyc
 __pycache__/
-db.sqlite3
-.env
-/static/
+env/
+venv/
 *.sqlite3
-.DS_Store
+
+# Django
+/staticfiles/
+/media/
+db.sqlite3
+
+# VS Code
+.vscode/

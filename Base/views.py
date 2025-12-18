@@ -18,12 +18,12 @@ def add_to_db(request):
 			cont.full_clean()
 			cont.save()
 			messages.success(request, "Your Contacts had been Saved successfully!")
-			return redirect("/")
+			return redirect("/#")
 			
 		except ValidationError as e:
 			for field,errors in e.message_dict.items():
 				for error in errors:
 					messages.error(request, f"{field}: {error}", extra_tags='danger')
-				return redirect("/")
+				return redirect("/#")
 	messages.success(request, "Welcome to my Portfolio!")
-	return render(request,"Base/home.html")
+	return render(request,"home.html")
