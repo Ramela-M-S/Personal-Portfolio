@@ -26,8 +26,7 @@ DEBUG = False
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = ["ramela-m-s-portfolio-production.up.railway.app"
-]
+ALLOWED_HOSTS = ["ramela-m-s-portfolio-production.up.railway.app",'127.0.0.1', 'localhost']
 CSRF_TRUSTED_ORIGINS = [
     "https://ramela-m-s-portfolio-production.up.railway.app"
 ]
