@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ["ramela-m-s-portfolio-production.up.railway.app"
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "https://ramela-m-s-portfolio-production.up.railway.app",
+    "https://ramela-m-s-portfolio-production.up.railway.app"
 ]
 
 
@@ -123,7 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS =[BASE_DIR / 'Base'/ 'static',]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
