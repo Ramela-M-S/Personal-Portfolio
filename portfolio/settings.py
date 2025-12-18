@@ -20,15 +20,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY =  os.environ.get(
-    "SECRET_KEY",
-    "django-insecure-dev-key-only-for-local"
-)
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-default-key")
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+
+ALLOWED_HOSTS = [os.environ.get("RAILWAY_SERVICE_NAME", "*")]
 CSRF_TRUSTED_ORIGINS = [
     "https://*.up.railway.app"
 ]
@@ -63,7 +61,7 @@ ROOT_URLCONF = 'portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR /'Base' /  'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
