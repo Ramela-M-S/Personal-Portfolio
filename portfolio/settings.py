@@ -30,8 +30,7 @@ ALLOWED_HOSTS = ["ramela-m-s-portfolio-production.up.railway.app",'127.0.0.1', '
 CSRF_TRUSTED_ORIGINS = [
     "https://ramela-m-s-portfolio-production.up.railway.app"
 ]
-CSRF_COOKIE_SECURE = False  # True only if using HTTPS
-SESSION_COOKIE_SECURE = False
+
 
 # Application definition
 
