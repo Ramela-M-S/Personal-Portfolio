@@ -498,24 +498,27 @@ h4 {
 
 
 /* Projects Section */
+/* Projects Section */
 .projects-container {
+    display: flex;          /* ensure flexbox is enabled */
     justify-content: center;
     align-items: center;
-    margin: auto;
     flex-wrap: wrap;
+    margin: auto;
+    gap: 1rem;              /* optional spacing between items */
 }
 
-
-
-
+/* Make projects responsive */
 .projects-item {
     overflow: hidden;
-    width: 20rem;
+    width: 90%;             /* relative width for mobile */
+    max-width: 30rem;       /* max width for large screens */
     margin: 1rem;
     background: #2c2c6c;
     border-radius: 1.5rem;
     padding: 2rem 1rem;
     text-align: center;
+    box-sizing: border-box; /* include padding in width */
 }
 
 .projects-item h1 {
@@ -524,17 +527,32 @@ h4 {
 }
 
 .projects-item p {
-    line-height: 20px;
-    font-size: .9rem;
+    line-height: 1.5rem;
+    font-size: 0.9rem;
 }
 
+/* Buttons inside project item */
 .buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* center buttons on small screens */
     gap: 1rem;
     margin-top: 1rem;
-    width: 100%;
+    flex-wrap: wrap;         /* wrap buttons if they overflow */
 }
+
+/* Media Queries for Smaller Devices */
+@media (min-width: 768px) {
+    .projects-item {
+        width: 45%;  /* two items per row on tablets */
+    }
+}
+
+@media (min-width: 1200px) {
+    .projects-item {
+        width: 30%;  /* three items per row on large screens */
+    }
+}
+
 
 
 
@@ -916,49 +934,67 @@ ul li a:hover {
 
     .projects-container {
         padding: 1rem 0;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
         align-items: center;
         justify-content: center;
     }
 
     .projects-item {
-        width: 95%;
-        min-height: auto;
-        max-width: none;
+        width: 96%;
+        max-width: 420px;
         margin: 0 auto;
-        padding: 1.5rem;
+        padding: 1rem 1.1rem;
         flex-shrink: 0;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        justify-content: flex-start;
         background: #2c2c6c;
-        border-radius: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        box-sizing: border-box;
     }
 
     .projects-item h2 {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+        margin-bottom: 0.5rem;
+        width: 100%;
+        text-align: left;
     }
 
     .projects-item p {
-        font-size: 0.85rem;
-        line-height: 1.4;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+        text-align: left;
     }
 
     .buttons {
-        flex-direction: column;
-        gap: 0.5rem;
-        padding: 0 0.5rem;
+        display: flex;
+        gap: 0.6rem;
+        width: 100%;
+        justify-content: space-between;
+        padding: 0;
     }
 
     .buttons a {
-        width: 100%;
-        font-size: 0.85rem;
-        padding: 0.6rem 1rem;
+        width: 48%;
+        font-size: 0.95rem;
+        padding: 0.6rem 0.6rem;
         text-align: center;
+        display: inline-block;
+    }
+
+    /* Ensure buttons stack on very small screens */
+    @media (max-width: 360px) {
+        .buttons {
+            flex-direction: column;
+        }
+        .buttons a {
+            width: 100%;
+        }
     }
 
     /* Contact Section */
