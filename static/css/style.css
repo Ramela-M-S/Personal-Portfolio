@@ -498,63 +498,107 @@ h4 {
 
 
 /* Projects Section */
-/* Projects Section */
+/* 1. GLOBAL PROJECTS STYLES (MOBILE FIRST) */
 .projects-container {
-    display: flex;          /* ensure flexbox is enabled */
+    display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
-    margin: auto;
-    gap: 1rem;              /* optional spacing between items */
+    gap: 1.2rem;
+    padding: 1.5rem;
 }
 
-/* Make projects responsive */
 .projects-item {
-    overflow: hidden;
-    width: 90%;             /* relative width for mobile */
-    max-width: 30rem;       /* max width for large screens */
-    margin: 1rem;
     background: #2c2c6c;
-    border-radius: 1.5rem;
-    padding: 2rem 1rem;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    box-sizing: border-box;
     text-align: center;
-    box-sizing: border-box; /* include padding in width */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    
+    /* MOBILE SQUARE REQUIREMENT */
+    width: 90%;             /* Fits nicely on screen */
+    aspect-ratio: 1 / 1;    /* Perfect Square */
+    max-width: 320px;       /* Prevents card from getting giant */
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Header at top, buttons at bottom */
+    align-items: center;
 }
 
-.projects-item h1 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+/* SMALLER FONT FOR MOBILE SQUARE */
+.projects-item h1, .projects-item h2 {
+    font-size: 1.1rem;      /* Smaller title */
+    margin-bottom: 0.3rem;
+    color: white;
 }
 
 .projects-item p {
-    line-height: 1.5rem;
-    font-size: 0.9rem;
+    font-size: 0.8rem;      /* Smaller text to fit square */
+    line-height: 1.3;
+    color: #d1d1d1;
+    overflow: hidden;
+    /* Limits text to 4 lines so buttons stay visible in the square */
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;
 }
 
-/* Buttons inside project item */
+/* BUTTONS INSIDE CARD (MOBILE STACKED) */
 .buttons {
+    width: 100%;
     display: flex;
-    justify-content: center; /* center buttons on small screens */
-    gap: 1rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;         /* wrap buttons if they overflow */
+    flex-direction: column; /* Stacked inside square */
+    gap: 0.5rem;
+    margin-top: 0.5rem;
 }
 
-/* Media Queries for Smaller Devices */
-@media (min-width: 768px) {
+.buttons a {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 0.8rem;      /* Smaller button text */
+    border-radius: 0.5rem;
+    background: #ff4c7c;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s;
+}
+
+/* 2. TABLET LAYOUT (Starts at 600px - 768px) */
+@media (min-width: 600px) {
     .projects-item {
-        width: 45%;  /* two items per row on tablets */
+        width: 45%;         /* 2 cards per row */
+        aspect-ratio: auto; /* Not square anymore for better fit */
+        min-height: 380px;  /* Uniform height */
+    }
+
+    .projects-item p {
+        font-size: 0.9rem;  /* Slightly larger font */
+        -webkit-line-clamp: unset; /* Show all text */
+    }
+
+    .buttons {
+        flex-direction: row; /* Buttons side-by-side */
+    }
+
+    .buttons a {
+        flex: 1;
+        font-size: 0.9rem;
     }
 }
 
-@media (min-width: 1200px) {
+/* 3. LAPTOP LAYOUT (1024px and up) */
+@media (min-width: 1024px) {
     .projects-item {
-        width: 30%;  /* three items per row on large screens */
+        width: 20rem;       /* Fixed width for desktop grid */
+        min-height: 350px;
+    }
+    
+    .projects-container {
+        gap: 2rem;
     }
 }
-
-
-
 
 /* Contact me Section */
 .form {
@@ -928,74 +972,7 @@ ul li a:hover {
     }
 
     /* Projects Section */
-    #Projects {
-        padding: 1rem;
-    }
-
-    .projects-container {
-        padding: 1rem 0;
-        flex-wrap: nowrap;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .projects-item {
-        width: 96%;
-        max-width: 420px;
-        margin: 0 auto;
-        padding: 1rem 1.1rem;
-        flex-shrink: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        background: #2c2c6c;
-        border-radius: 12px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-        box-sizing: border-box;
-    }
-
-    .projects-item h2 {
-        font-size: 1.15rem;
-        margin-bottom: 0.5rem;
-        width: 100%;
-        text-align: left;
-    }
-
-    .projects-item p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 0.8rem;
-        text-align: left;
-    }
-
-    .buttons {
-        display: flex;
-        gap: 0.6rem;
-        width: 100%;
-        justify-content: space-between;
-        padding: 0;
-    }
-
-    .buttons a {
-        width: 48%;
-        font-size: 0.95rem;
-        padding: 0.6rem 0.6rem;
-        text-align: center;
-        display: inline-block;
-    }
-
-    /* Ensure buttons stack on very small screens */
-    @media (max-width: 360px) {
-        .buttons {
-            flex-direction: column;
-        }
-        .buttons a {
-            width: 100%;
-        }
-    }
+    
 
     /* Contact Section */
     #Contact {
@@ -1209,45 +1186,7 @@ ul li a:hover {
     }
 
     /* Projects Section */
-    #Projects {
-        padding: 2rem 1rem;
-    }
-
-    .projects-container {
-        padding: 1rem;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        justify-content: center;
-    }
-
-    .projects-item {
-        width: 100%;
-        max-width: 450px;
-        margin: 0;
-        padding: 1.5rem;
-    }
-
-    .projects-item h2 {
-        font-size: 1.3rem;
-    }
-
-    .projects-item p {
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-
-    .buttons {
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        justify-content: center;
-    }
-
-    .buttons a {
-        flex: 0 1 auto;
-        min-width: 130px;
-        padding: 0.7rem 1.2rem;
-        font-size: 0.95rem;
-    }
+   
 
     /* Contact Section */
     #Contact {
@@ -1405,16 +1344,7 @@ ul li a:hover {
         display: block;
     }
 
-    /* Projects Section */
-    .projects-container {
-        flex-wrap: wrap;
-    }
-
-    .projects-item {
-        width: calc(50% - 2rem);
-        max-width: 380px;
-    }
-
+    
     /* Form Section */
     .form {
         width: 90%;
@@ -1540,28 +1470,7 @@ ul li a:hover {
     }
 
     /* Projects Section */
-    .projects-container {
-        flex-wrap: wrap;
-    }
-
-    .projects-item {
-        width: 20rem;
-        margin: 1rem;
-    }
-
-    .buttons {
-        flex-wrap: nowrap;
-        gap: 1rem;
-        justify-content: flex-start;
-    }
-
-    .buttons a {
-        flex: 0 1 auto;
-        min-width: auto;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-    }
-
+    
     /* Form Section */
     .form {
         width: 80%;
@@ -1583,7 +1492,5 @@ ul li a:hover {
         height: 25rem;
     }
 
-    .projects-item {
-        width: 22rem;
-    }
+    
 }
